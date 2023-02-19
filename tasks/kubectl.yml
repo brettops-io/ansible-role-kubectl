@@ -1,0 +1,6 @@
+---
+- name: Install kubectl from {{ kubectl_install_method }}
+  ansible.builtin.include_tasks: kubectl-install-{{ kubectl_install_method }}.yml
+
+- name: Add kubectl completions for bash
+  ansible.builtin.include_tasks: kubectl-completion-bash.yml

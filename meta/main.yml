@@ -1,0 +1,24 @@
+galaxy_info:
+  author: Brett Weir
+  namespace: brettops
+  description: Install kubectl and related tools
+  company: BrettOps Inc
+  issue_tracker_url: https://gitlab.com/brettops/ansible/roles/kubectl/-/issues
+  license: MIT
+  min_ansible_version: "2.1"
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+        - stretch
+    - name: Ubuntu
+      versions:
+        - jammy
+        - focal
+        - bionic
+    - name: Fedora
+      versions:
+        - "37"
+  galaxy_tags: []
+dependencies: []

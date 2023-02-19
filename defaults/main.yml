@@ -1,0 +1,5 @@
+---
+# define to set specific version, otherwise latest stable is used
+# kubectl_version: "v1.25.0"
+
+kubectx_version: "0.9.4"

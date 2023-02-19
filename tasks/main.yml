@@ -1,0 +1,6 @@
+---
+- name: Include kubectl tasks
+  ansible.builtin.include_tasks: kubectl.yml
+
+- name: Include kubectx / kubens tasks
+  ansible.builtin.include_tasks: kubectx.yml

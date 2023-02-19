@@ -1,0 +1,17 @@
+---
+argument_specs:
+  main:
+    options:
+      kubectl_version:
+        type: "str"
+        required: false
+        description: |-
+          The kubectl version to install, e.g.: `v1.25.6`. If not specified,
+          uses the latest available stable version.
+
+      kubectx_version:
+        type: "str"
+        required: false
+        description: |-
+          The version of kubectx to install.
+        default: "0.9.4"

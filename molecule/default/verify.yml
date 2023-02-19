@@ -1,0 +1,28 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Command kubectl is available
+      ansible.builtin.command: kubectl
+      changed_when: false
+
+    - name: Command kubectx is available
+      ansible.builtin.command: kubectx --version
+      changed_when: false
+
+    - name: Command kubens is available
+      ansible.builtin.command: kubens --version
+      changed_when: false
+
+    - name: Symlink k is available
+      ansible.builtin.command: k
+      changed_when: false
+
+    - name: Symlink kctx is available
+      ansible.builtin.command: kctx --version
+      changed_when: false
+
+    - name: Symlink kns is available
+      ansible.builtin.command: kns --version
+      changed_when: false

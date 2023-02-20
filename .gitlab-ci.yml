@@ -1,0 +1,38 @@
+stages:
+  - test
+  - build
+  - deploy
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - when: always
+
+ansible-lint:
+  stage: test
+  image: "${CONTAINER_PROXY}python:3.10-bullseye"
+  variables:
+    GIT_DEPTH: "1"
+  script:
+    - python3 -m pip install ansible-lint
+    - ansible-lint
+
+ansible-molecule:
+  stage: test
+  image: "${CONTAINER_PROXY}docker:20"
+  services:
+    - name: "${CONTAINER_PROXY}docker:20-dind"
+      alias: docker
+  variables:
+    GIT_DEPTH: "1"
+    # https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#docker-in-docker-with-tls-enabled-in-the-docker-executor
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - docker --version
+    - echo "$CI_DEPENDENCY_PROXY_PASSWORD" | docker login "$CI_DEPENDENCY_PROXY_SERVER" -u "$CI_DEPENDENCY_PROXY_USER" --password-stdin
+    - echo "$CI_DEPENDENCY_PROXY_PASSWORD" | docker login "$CI_SERVER_HOST" -u "$CI_DEPENDENCY_PROXY_USER" --password-stdin
+    - apk add --no-cache python3 py3-pip
+    - python3 -m pip install molecule[docker]
+    - molecule --version
+    - molecule test

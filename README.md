@@ -1,18 +1,18 @@
-# `brettops.kubectl` Ansible role
+# kubectl Ansible role
 
 [![pipeline status](https://gitlab.com/brettops/ansible/roles/kubectl/badges/main/pipeline.svg)](https://gitlab.com/brettops/ansible/roles/kubectl/-/commits/main)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 An Ansible role to install
-[ `kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) to a workstation.
+[`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) to a workstation.
 
 Installing `kubectl` is not the hardest task in the world, but installing it
 consistently and repeatedly across many platforms and enabling auto-completion
 and symlinks and plugins and companion tools correctly is an accumulating
 challenge.
 
-This project is the first of a series of Ansible roles for solving these
-simple challenges.
+This project is the first of a series of Ansible roles for solving these simple
+challenges.
 
 ## What does this role provide?
 
@@ -24,10 +24,8 @@ This role does the following:
 
 - Installs `kubens` and `kubectx` to simplify managing cluster contexts.
 
-- Installs `fzf` to improve the experience of `kubens` and `kubectx`.
-
-- Installs `k`, `kns`, and `kctx` symlinks to point to `kubectl`, `kubens`,
-  and `kubectx`.
+- Installs `k`, `kns`, and `kctx` symlinks to point to `kubectl`, `kubens`, and
+  `kubectx`.
 
 - Installs everything to `/usr/local/bin` to avoid interfering with the OS.
 

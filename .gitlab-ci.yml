@@ -18,7 +18,7 @@ ansible-lint:
     - python3 -m pip install ansible-lint
     - ansible-lint
 
-ansible-molecule:
+.ansible-molecule-base:
   stage: test
   image: "${CONTAINER_PROXY}docker:20"
   services:
@@ -35,4 +35,19 @@ ansible-molecule:
     - apk add --no-cache python3 py3-pip
     - python3 -m pip install molecule[docker]
     - molecule --version
-    - molecule test
+    - molecule test -p "${ANSIBLE_MOLECULE_PLATFORM}"
+
+ansible-molecule-ubuntu2204:
+  extends: .ansible-molecule-base
+  variables:
+    ANSIBLE_MOLECULE_PLATFORM: ubuntu2204
+
+ansible-molecule-ubuntu2004:
+  extends: .ansible-molecule-base
+  variables:
+    ANSIBLE_MOLECULE_PLATFORM: ubuntu2004
+
+ansible-molecule-ubuntu1804:
+  extends: .ansible-molecule-base
+  variables:
+    ANSIBLE_MOLECULE_PLATFORM: ubuntu1804

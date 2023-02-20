@@ -37,17 +37,15 @@ ansible-lint:
     - molecule --version
     - molecule test -p "${ANSIBLE_MOLECULE_PLATFORM}"
 
-ansible-molecule-ubuntu2204:
+ansible-molecule:
   extends: .ansible-molecule-base
-  variables:
-    ANSIBLE_MOLECULE_PLATFORM: ubuntu2204
-
-ansible-molecule-ubuntu2004:
-  extends: .ansible-molecule-base
-  variables:
-    ANSIBLE_MOLECULE_PLATFORM: ubuntu2004
-
-ansible-molecule-ubuntu1804:
-  extends: .ansible-molecule-base
-  variables:
-    ANSIBLE_MOLECULE_PLATFORM: ubuntu1804
+  parallel:
+    matrix:
+      - ANSIBLE_MOLECULE_PLATFORM:
+          - ubuntu1804
+          - ubuntu2004
+          - ubuntu2204
+          - debian11
+          - debian10
+          - debian9
+          - fedora37

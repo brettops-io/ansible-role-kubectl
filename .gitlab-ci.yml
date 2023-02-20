@@ -9,36 +9,13 @@ workflow:
       when: never
     - when: always
 
-ansible-lint:
-  stage: test
-  image: "${CONTAINER_PROXY}python:3.10-bullseye"
-  variables:
-    GIT_DEPTH: "1"
-  script:
-    - python3 -m pip install ansible-lint
-    - ansible-lint
+include:
+  - project: brettops/pipelines/ansible
+    file: role.yml
 
-.ansible-molecule-base:
-  stage: test
-  image: "${CONTAINER_PROXY}docker:20"
-  services:
-    - name: "${CONTAINER_PROXY}docker:20-dind"
-      alias: docker
+ansible-molecule-test:
   variables:
-    GIT_DEPTH: "1"
-    # https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#docker-in-docker-with-tls-enabled-in-the-docker-executor
-    DOCKER_TLS_CERTDIR: "/certs"
-  script:
-    - docker --version
-    - echo "$CI_DEPENDENCY_PROXY_PASSWORD" | docker login "$CI_DEPENDENCY_PROXY_SERVER" -u "$CI_DEPENDENCY_PROXY_USER" --password-stdin
-    - echo "$CI_DEPENDENCY_PROXY_PASSWORD" | docker login "$CI_SERVER_HOST" -u "$CI_DEPENDENCY_PROXY_USER" --password-stdin
-    - apk add --no-cache python3 py3-pip
-    - python3 -m pip install molecule[docker]
-    - molecule --version
-    - molecule test -p "${ANSIBLE_MOLECULE_PLATFORM}"
-
-ansible-molecule:
-  extends: .ansible-molecule-base
+    ANSIBLE_MOLECULE_TEST_OPTS: "-p $ANSIBLE_MOLECULE_PLATFORM"
   parallel:
     matrix:
       - ANSIBLE_MOLECULE_PLATFORM:

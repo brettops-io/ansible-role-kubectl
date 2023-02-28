@@ -1,6 +1,7 @@
 galaxy_info:
-  author: Brett Weir
+  role_name: kubectl
   namespace: brettops
+  author: Brett Weir
   description: Install kubectl and related tools
   company: BrettOps Inc
   issue_tracker_url: https://gitlab.com/brettops/ansible/roles/kubectl/-/issues
@@ -19,6 +20,6 @@ galaxy_info:
         - bionic
     - name: Fedora
       versions:
-        - "37"
+        - "36"
   galaxy_tags: []
 dependencies: []

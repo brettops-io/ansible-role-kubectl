@@ -3,6 +3,7 @@
 [![pipeline status](https://gitlab.com/brettops/ansible/roles/kubectl/badges/main/pipeline.svg)](https://gitlab.com/brettops/ansible/roles/kubectl/-/commits/main)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![ansible role](https://img.shields.io/ansible/role/61613)](https://galaxy.ansible.com/brettops/kubectl)
+[![role downloads](https://img.shields.io/ansible/role/d/61613)](https://galaxy.ansible.com/brettops/kubectl)
 
 An Ansible role to install
 [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) to a workstation.

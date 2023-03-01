@@ -1,7 +1,8 @@
-# kubectl Ansible role
+# `brettops.kubectl` Ansible role
 
 [![pipeline status](https://gitlab.com/brettops/ansible/roles/kubectl/badges/main/pipeline.svg)](https://gitlab.com/brettops/ansible/roles/kubectl/-/commits/main)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![ansible role](https://img.shields.io/ansible/role/61613)](https://galaxy.ansible.com/brettops/kubectl)
 
 An Ansible role to install
 [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) to a workstation.
@@ -29,7 +30,7 @@ This role does the following:
 
 - Installs everything to `/usr/local/bin` to avoid interfering with the OS.
 
-## Where can I use this?
+## Supported platforms
 
 It is currently tested on the following platforms:
 
@@ -39,16 +40,32 @@ It is currently tested on the following platforms:
 
   - Debian 11, 10, 9
 
-  - Fedora 37
+  - Fedora 36
 
   - Ubuntu 22.04, 20.04, 18.04
 
-## How do I use this?
+## Installation
+
+### From Ansible Galaxy
 
 Add the following to your `requirements.yml` file:
 
 ```yaml
-# requirements.yml
+- name: brettops.kubectl
+```
+
+You can also use a specific version:
+
+```yaml
+- name: brettops.kubectl
+  version: "0.1.0"
+```
+
+### From source
+
+Add the following to your `requirements.yml` file:
+
+```yaml
 - name: brettops.kubectl
   src: git+https://gitlab.com/brettops/ansible/roles/kubectl.git
 ```
@@ -56,13 +73,14 @@ Add the following to your `requirements.yml` file:
 You can also use a specific version:
 
 ```yaml
-# requirements.yml
 - name: brettops.kubectl
   src: git+https://gitlab.com/brettops/ansible/roles/kubectl.git
   version: "0.1.0"
 ```
 
-Reference the role like this in your playbook:
+## Usage
+
+Reference the role in your playbook:
 
 ```yaml
 - hosts: all

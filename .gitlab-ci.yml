@@ -11,11 +11,14 @@ workflow:
 
 include:
   - project: brettops/pipelines/ansible
-    file: role.yml
+    ref: 0.1.0
+    file:
+      - lint.yml
+      - molecule.yml
 
 ansible-molecule-test:
   variables:
-    ANSIBLE_MOLECULE_TEST_OPTS: "-p $ANSIBLE_MOLECULE_PLATFORM"
+    ANSIBLE_MOLECULE_TEST_OPTS: -p $ANSIBLE_MOLECULE_PLATFORM
   parallel:
     matrix:
       - ANSIBLE_MOLECULE_PLATFORM:

@@ -8,13 +8,18 @@ repos:
       - id: fix-byte-order-marker
       - id: trailing-whitespace
 
+  - repo: https://gitlab.com/brettops/tools/cici-tools
+    rev: "0.2.4"
+    hooks:
+      - id: update
+
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.0.0-alpha.4"
+    rev: "v3.0.0-alpha.9-for-vscode"
     hooks:
       - id: prettier
 
   - repo: https://github.com/ansible-community/ansible-lint
-    rev: "v6.14.0a0"
+    rev: "v6.17.2"
     hooks:
       - id: ansible-lint
 

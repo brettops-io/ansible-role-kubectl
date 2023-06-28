@@ -16,7 +16,7 @@ include:
       - lint.yml
       - molecule.yml
 
-ansible-molecule-test:
+ansible-molecule:
   variables:
     ANSIBLE_MOLECULE_TEST_OPTS: -p $ANSIBLE_MOLECULE_PLATFORM
   parallel:

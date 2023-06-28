@@ -15,6 +15,10 @@ include:
     file:
       - lint.yml
       - molecule.yml
+  - project: brettops/pipelines/prettier
+    ref: 0.1.0
+    file:
+      - include.yml
 
 ansible-molecule:
   variables:
@@ -22,10 +26,10 @@ ansible-molecule:
   parallel:
     matrix:
       - ANSIBLE_MOLECULE_PLATFORM:
+          - debian9
+          - debian10
+          - debian11
+          - fedora37
           - ubuntu1804
           - ubuntu2004
           - ubuntu2204
-          - debian11
-          - debian10
-          - debian9
-          - fedora37

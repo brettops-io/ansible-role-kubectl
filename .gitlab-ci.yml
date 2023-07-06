@@ -11,14 +11,14 @@ workflow:
 
 include:
   - project: brettops/pipelines/ansible
+    ref: 0.3.1
+    file:
+      - ansible-lint.yml
+      - ansible-molecule.yml
+  - project: brettops/pipelines/prettier
     ref: 0.2.0
     file:
-      - lint.yml
-      - molecule.yml
-  - project: brettops/pipelines/prettier
-    ref: 0.1.0
-    file:
-      - include.yml
+      - prettier.yml
 
 ansible-molecule:
   parallel:

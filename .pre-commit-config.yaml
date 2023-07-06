@@ -9,7 +9,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://gitlab.com/brettops/tools/cici-tools
-    rev: "0.2.4"
+    rev: "0.3.0"
     hooks:
       - id: update
 
